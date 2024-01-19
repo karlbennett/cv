@@ -1,0 +1,80 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "env": {
+    "jest": true,
+    "browser": true,
+    "mocha":true
+  },
+  "plugins": [
+    "jest",
+    "react",
+    "react-hooks",
+    "jsx-a11y",
+    "import",
+    "@typescript-eslint"
+  ],
+  "settings": {
+    "import/extensions": [".js", ".mjs", ".jsx", ".js", ".jsx", ".ts", ".tsx"],
+    "import/resolver": {
+      "typescript": {}
+    },
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "no-use-before-define": "off",
+    "import/prefer-default-export": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-filename-extension": "off",
+    "linebreak-style": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "react/no-array-index-key": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "object-curly-newline": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "jsx-a11y/label-has-for": "off",
+    "max-len": ["error", {"code": 140}],
+    "arrow-parens": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error"],
+    "prefer-object-spread": "off",
+    "react/jsx-fragments": "off",
+    "react/jsx-curly-newline": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off",
+    "no-plusplus": [2, { "allowForLoopAfterthoughts": true }],
+    "no-undef": "off",
+    "import/no-extraneous-dependencies": [
+      "error", {
+        "devDependencies": true
+      }
+    ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never",
+        "tsx": "never",
+        "jsx": "never",
+        "js": "never"
+      }
+    ],
+    "import/no-unresolved": 0,
+    "semi": "error"
+  }
+}

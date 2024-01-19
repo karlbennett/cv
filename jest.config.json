@@ -1,0 +1,35 @@
+{
+  "testEnvironment": "jsdom",
+  "moduleDirectories": [
+    "node_modules",
+    "src"
+  ],
+  "moduleNameMapper": {
+    "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/fileMock.js",
+    "\\.(css|less|md)$": "<rootDir>/test/fileMock.js"
+  },
+  "transformIgnorePatterns": [
+    "nothing"
+  ],
+  "setupFilesAfterEnv": ["<rootDir>/test/setupTests.js"],
+  "coverageReporters": [
+    "json",
+    "html",
+    "lcov",
+    "text"
+  ],
+  "coverageThreshold": {
+    "global": {
+      "branches": 100,
+      "functions": 100,
+      "lines": 100,
+      "statements": 100
+    }
+  },
+  "collectCoverageFrom": [
+    "src/**/*.{js,jsx}",
+    "src/**/*.{ts,tsx}",
+    "!src/**/index.ts",
+    "!src/**/*.d.ts"
+  ]
+}

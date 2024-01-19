@@ -1,0 +1,25 @@
+# Intellij
+.idea
+*.iml
+
+# Maven
+target
+
+# Node
+node_modules
+node
+build
+coverage
+
+# Private Personal Details for Job Applications
+personal.json
+
+# Temp
+temp*.txt
+temp*.json
+temp*.xml
+temp*.yml
+temp*.yaml
+temp*.csv
+temp*.html
+temp*.js

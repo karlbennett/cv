@@ -1,0 +1,37 @@
+name: 'Lint, Test, Build, and Deploy the project to gh-pages'
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version-file: '.java-version'
+          distribution: 'adopt'
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.m2/repository
+            node
+            node_modules
+          key: setup-java-${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            setup-java-${{ runner.os }}-maven-
+            setup-java-
+      - name: Create dummy personal.json file
+        run: echo '{}' > personal.json
+      - name: Maven Build
+        run: mvn clean package
+      - name: Deploy to gh-pages
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          PATH=./node:$PATH npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

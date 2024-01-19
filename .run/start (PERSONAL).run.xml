@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="start (PERSONAL)" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/package.json" />
+    <command value="start" />
+    <node-interpreter value="$PROJECT_DIR$/node/node" />
+    <package-manager value="$PROJECT_DIR$/node/npm" />
+    <envs>
+      <env name="PERSONAL" value="true" />
+    </envs>
+    <method v="2" />
+  </configuration>
+</component>

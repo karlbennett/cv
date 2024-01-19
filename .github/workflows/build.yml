@@ -1,0 +1,31 @@
+name: 'Lint, Test, and Build the project'
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version-file: '.java-version'
+          distribution: 'adopt'
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.m2/repository
+            node
+            node_modules
+          key: setup-java-${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            setup-java-${{ runner.os }}-maven-
+            setup-java-
+      - name: Create dummy personal.json file
+        run: echo '{}' > personal.json
+      - name: Maven Build
+        run: mvn clean package
