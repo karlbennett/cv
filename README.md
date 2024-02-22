@@ -28,7 +28,7 @@ promoting, through practice, the most effective implementations of these discipl
 - Business Engagement
 - Agile Software Delivery
 - Team Leadership
-- Technical Strategy/Road Map
+- Technical Road Map/Strategy
 - Behaviour Driven Development
 - Test Driven Development/Design
 - Software/Infrastructure Design
