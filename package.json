@@ -41,7 +41,7 @@
     "svgo": "^3.2.0",
     "gh-pages": "^6.1.1",
     "eslint": "^8.57.0",
-    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jest": "^27.9.0",
