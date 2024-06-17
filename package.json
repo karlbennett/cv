@@ -51,7 +51,7 @@
     "prettier": "^3.3.1",
     "jest": "^29.7.0",
     "babel-jest": "^29.7.0",
-    "@testing-library/jest-dom": "^6.4.5",
+    "@testing-library/jest-dom": "^6.4.6",
     "jest-environment-jsdom": "^29.7.0",
     "chance": "^1.1.11",
     "chance-object": "^1.0.1",
