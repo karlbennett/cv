@@ -53,7 +53,7 @@
     "babel-jest": "^29.7.0",
     "@testing-library/jest-dom": "^6.4.6",
     "jest-environment-jsdom": "^29.7.0",
-    "chance": "^1.1.11",
+    "chance": "^1.1.12",
     "chance-object": "^1.0.1",
     "react-test-renderer": "^18.3.1",
     "serve": "^14.2.3"
