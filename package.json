@@ -23,7 +23,7 @@
     "rehype-raw": "^7.0.0"
   },
   "devDependencies": {
-    "@types/node": "^20.14.11",
+    "@types/node": "^22.0.0",
     "@types/jest": "^29.5.12",
     "@babel/core": "^7.24.9",
     "@babel/preset-env": "^7.24.8",
