@@ -17,6 +17,7 @@ export const usePersonal = (): Personal => {
     const hasPersonal = !!process.env.PERSONAL;
     setPersonal({
       hasPersonal,
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
       details: hasPersonal ? require("../../../personal.json") : EMPTY_PERSONAL_DETAILS,
     });
   }, []);
