@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.5.4",
-    "@types/jest": "^29.5.12",
+    "@types/jest": "^29.5.13",
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.4",
     "@babel/preset-react": "^7.24.7",
