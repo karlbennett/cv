@@ -56,7 +56,7 @@
     "chance": "^1.1.12",
     "chance-object": "^1.0.1",
     "react-test-renderer": "^18.3.1",
-    "serve": "^14.2.3"
+    "serve": "^14.2.4"
   },
   "browserslist": {
     "production": [
