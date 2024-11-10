@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import React, { useState } from "react";
 import { create } from "react-test-renderer";
 import { ReadMe } from "../../src/components/ReadMe";
