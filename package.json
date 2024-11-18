@@ -39,7 +39,7 @@
     "babel-loader": "^9.2.1",
     "chance": "^1.1.12",
     "chance-object": "^1.0.1",
-    "eslint": "^9.14.0",
+    "eslint": "^9.15.0",
     "eslint-import-resolver-typescript": "^3.6.3",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jest": "^28.9.0",
