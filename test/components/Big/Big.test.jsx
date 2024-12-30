@@ -1,11 +1,7 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import React, { useContext } from "react";
-import { create } from "react-test-renderer";
-import { usePersonal, PersonalDetails } from "../../../src/components/PersonalDetails";
+import { render } from "@testing-library/react";
+import { usePersonal } from "../../../src/components/PersonalDetails";
 import { SlotsContext } from "../../../src/components/Slots";
-import { Header } from "../../../src/components/Header";
-import { Block } from "../../../src/components/Block";
-import { Experience } from "../../../src/components/Experience";
 import { Big } from "../../../src/components/Big";
 
 jest.mock("react", () => ({
@@ -13,24 +9,24 @@ jest.mock("react", () => ({
   useContext: jest.fn(),
 }));
 jest.mock("@mui/material", () => ({
-  Box: mockReactComponent(),
-  Grid: mockReactComponent(),
+  Box: mockReactComponent("Box"),
+  Grid: mockReactComponent("Grid"),
 }));
 jest.mock("../../../src/components/PersonalDetails", () => ({
-  PersonalDetails: mockReactComponent(),
+  PersonalDetails: mockReactComponent("PersonalDetails"),
   usePersonal: jest.fn(),
 }));
 jest.mock("../../../src/components/Header", () => ({
-  Header: mockReactComponent(),
+  Header: mockReactComponent("Header"),
 }));
 jest.mock("../../../src/components/Slots", () => ({
-  SlotsContext: mockReactComponent(),
+  SlotsContext: mockReactComponent("SlotsContext"),
 }));
 jest.mock("../../../src/components/Block", () => ({
-  Block: mockReactComponent(),
+  Block: mockReactComponent("Block"),
 }));
 jest.mock("../../../src/components/Experience", () => ({
-  Experience: mockReactComponent(),
+  Experience: mockReactComponent("Experience"),
 }));
 
 describe("Big", () => {
@@ -38,7 +34,7 @@ describe("Big", () => {
     jest.restoreAllMocks();
   });
 
-  test("Can render without personal details.", () => {
+  test("Can render without personal details.", async () => {
     const slots = {
       header: chance.string(),
       profile: chance.string(),
@@ -53,21 +49,21 @@ describe("Big", () => {
     useContext.mockReturnValueOnce(slots);
 
     // When
-    const actual = create(<Big />).root;
+    const actual = render(<Big />);
 
     // Then
     expect(useContext).toBeCalledWith(SlotsContext);
-    expect(actual.findByType(Header).props.children).toEqual(slots.header);
-    expect(actual.findAllByType(PersonalDetails)).toEqual([]);
-    const blocks = actual.findAllByType(Block);
-    expect(blocks[0].props.children).toEqual(slots.profile);
-    expect(blocks[1].props.children).toEqual(slots.skills);
-    expect(blocks[2].props.children).toEqual(slots.education);
-    expect(blocks[3].props.children).toEqual(slots.tools);
-    expect(actual.findByType(Experience).props.children).toEqual(slots.experience);
+    expect(actual.getByTestId("Header")).toHaveTextContent(slots.header);
+    expect(actual.queryAllByTestId("PersonalDetails")).toEqual([]);
+    const blocks = await actual.findAllByTestId("Block");
+    expect(blocks[0]).toHaveTextContent(slots.profile);
+    expect(blocks[1]).toHaveTextContent(slots.skills);
+    expect(blocks[2]).toHaveTextContent(slots.education);
+    expect(blocks[3]).toHaveTextContent(slots.tools);
+    expect(actual.getByTestId("Experience")).toHaveTextContent(slots.experience);
   });
 
-  test("Can render with personal details.", () => {
+  test("Can render with personal details.", async () => {
     const slots = {
       header: chance.string(),
       profile: chance.string(),
@@ -82,17 +78,17 @@ describe("Big", () => {
     useContext.mockReturnValueOnce(slots);
 
     // When
-    const actual = create(<Big />).root;
+    const actual = render(<Big />);
 
     // Then
     expect(useContext).toBeCalledWith(SlotsContext);
-    expect(actual.findByType(Header).props.children).toEqual(slots.header);
-    expect(actual.findByType(PersonalDetails)).toBeDefined();
-    const blocks = actual.findAllByType(Block);
-    expect(blocks[0].props.children).toEqual(slots.profile);
-    expect(blocks[1].props.children).toEqual(slots.skills);
-    expect(blocks[2].props.children).toEqual(slots.education);
-    expect(blocks[3].props.children).toEqual(slots.tools);
-    expect(actual.findByType(Experience).props.children).toEqual(slots.experience);
+    expect(actual.getByTestId("Header")).toHaveTextContent(slots.header);
+    expect(actual.getByTestId("PersonalDetails")).toBeVisible();
+    const blocks = await actual.findAllByTestId("Block");
+    expect(blocks[0]).toHaveTextContent(slots.profile);
+    expect(blocks[1]).toHaveTextContent(slots.skills);
+    expect(blocks[2]).toHaveTextContent(slots.education);
+    expect(blocks[3]).toHaveTextContent(slots.tools);
+    expect(actual.getByTestId("Experience")).toHaveTextContent(slots.experience);
   });
 });

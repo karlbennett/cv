@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { create } from "react-test-renderer";
+import { render } from "@testing-library/react";
 import { ReadMe } from "../../src/components/ReadMe";
 import { SlotsContext } from "../../src/components/Slots";
-import { Layout } from "../../src/components/Layout";
 import { App } from "../../src/App";
 
 jest.mock("react", () => ({
@@ -10,18 +9,19 @@ jest.mock("react", () => ({
   useState: jest.fn(),
 }));
 jest.mock("../../src/components/Slots", () => ({
-  SlotsContext: { Provider: mockReactComponent() },
+  SlotsContext: { Provider: mockReactComponent("Provider") },
 }));
 jest.mock("../../src/components/ReadMe", () => ({
-  ReadMe: mockReactComponent(),
+  ReadMe: mockReactComponent("ReadMe"),
 }));
 jest.mock("../../src/components/Layout", () => ({
-  Layout: mockReactComponent(),
+  Layout: mockReactComponent("Layout"),
 }));
 
 describe("App", () => {
   afterEach(() => {
     jest.restoreAllMocks();
+    jest.clearAllMocks();
   });
 
   test("Can render with node", () => {
@@ -34,15 +34,16 @@ describe("App", () => {
     useState.mockReturnValueOnce([slots, setSlots]);
 
     // When
-    const actual = create(<App />).root;
-    actual.findByType(ReadMe).props.components.section({ node, "data-name": dataName });
+    const actual = render(<App />);
+    ReadMe.mock.calls[0][0].components.section({ node, "data-name": dataName });
 
     // Then
     expect(useState).toBeCalledWith({});
     expect(slots[dataName]).toBeDefined();
     expect(setSlots).toBeCalledWith(slots);
-    expect(actual.findByType(SlotsContext.Provider).props.value).toBe(slots);
-    expect(actual.findByType(Layout)).toBeDefined();
+    expect(SlotsContext.Provider.mock.calls[0][0])
+      .toMatchObject({ value: slots });
+    expect(actual.getByTestId("Layout")).toBeVisible();
   });
 
   test("Can render without node", () => {
@@ -53,13 +54,14 @@ describe("App", () => {
     useState.mockReturnValueOnce([slots, setSlots]);
 
     // When
-    const actual = create(<App />).root;
-    actual.findByType(ReadMe).props.components.section({});
+    const actual = render(<App />);
+    ReadMe.mock.calls[0][0].components.section({});
 
     // Then
     expect(useState).toBeCalledWith({});
     expect(setSlots).toBeCalledWith(slots);
-    expect(actual.findByType(SlotsContext.Provider).props.value).toBe(slots);
-    expect(actual.findByType(Layout)).toBeDefined();
+    expect(SlotsContext.Provider.mock.calls[0][0])
+      .toMatchObject({ value: slots });
+    expect(actual.getByTestId("Layout")).toBeVisible();
   });
 });

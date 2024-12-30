@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
 import React, { useEffect, useState } from "react";
-import { Link } from "@mui/material";
-import { create } from "react-test-renderer";
+import { render } from "@testing-library/react";
 import { EMPTY_PERSONAL_DETAILS } from "../../../src/empties";
 
 jest.mock("react", () => ({
@@ -10,13 +9,13 @@ jest.mock("react", () => ({
   useState: jest.fn(),
 }));
 jest.mock("@mui/material", () => ({
-  List: mockReactComponent(),
-  ListItem: mockReactComponent(),
-  ListItemIcon: mockReactComponent(),
-  Link: mockReactComponent(),
+  List: mockReactComponent("List"),
+  ListItem: mockReactComponent("ListItem"),
+  ListItemIcon: mockReactComponent("ListItemIcon"),
+  Link: mockReactComponent("Link"),
 }));
 jest.mock("../../../src/components/Block", () => ({
-  Block: mockReactComponent(),
+  Block: mockReactComponent("Block"),
 }));
 jest.mock("../../../personal.json", () => ({}));
 
@@ -43,18 +42,17 @@ describe("Personal", () => {
     useEffect.mockImplementationOnce((cb) => cb());
 
     // When
-    const actual = create(<PersonalDetails />);
+    const { container } = render(<PersonalDetails />);
 
     // Then
     expect(setPersonal).toBeCalledWith({ hasPersonal: false, details: EMPTY_PERSONAL_DETAILS });
-    expect(actual.toJSON()).toBeNull();
+    expect(container).toBeEmptyDOMElement();
   });
 
   test("Will render personal details if they are supplied.", () => {
     process.env.PERSONAL = "true";
     const personalJson = require("../../../personal.json");
     personalJson.something = chance.string();
-    const { Block } = require("../../../src/components/Block");
     const { PersonalDetails } = require("../../../src/components/PersonalDetails");
     const setPersonal = jest.fn();
     const personal = {
@@ -75,13 +73,13 @@ describe("Personal", () => {
     useEffect.mockImplementationOnce((cb) => cb());
 
     // When
-    const actual = create(<PersonalDetails />).root.findByType(Block).findAllByType(Link);
+    const actual = render(<PersonalDetails />).queryAllByTestId("Link");
 
     // Then
     expect(setPersonal).toBeCalledWith({ hasPersonal: true, details: personalJson });
-    expect(actual[0].props.children).toBe(personal.details.email);
-    expect(actual[1].props.children).toBe(personal.details.phone);
-    expect(actual[2].props.children).toBe(personal.details.address.text);
-    expect(actual[3].props.children).toBe(personal.details.website);
+    expect(actual[0]).toHaveTextContent(personal.details.email);
+    expect(actual[1]).toHaveTextContent(personal.details.phone);
+    expect(actual[2]).toHaveTextContent(personal.details.address.text);
+    expect(actual[3]).toHaveTextContent(personal.details.website);
   });
 });

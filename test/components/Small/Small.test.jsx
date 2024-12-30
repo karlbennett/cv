@@ -1,10 +1,6 @@
 import React, { useContext } from "react";
-import { create } from "react-test-renderer";
+import { render } from "@testing-library/react";
 import { SlotsContext } from "../../../src/components/Slots";
-import { PersonalDetails } from "../../../src/components/PersonalDetails";
-import { Header } from "../../../src/components/Header";
-import { Block } from "../../../src/components/Block";
-import { Experience } from "../../../src/components/Experience";
 import { Small } from "../../../src/components/Small";
 
 jest.mock("react", () => ({
@@ -12,19 +8,19 @@ jest.mock("react", () => ({
   useContext: jest.fn(),
 }));
 jest.mock("@mui/material", () => ({
-  Box: mockReactComponent(),
+  Box: mockReactComponent("Box"),
 }));
 jest.mock("../../../src/components/PersonalDetails", () => ({
-  PersonalDetails: mockReactComponent(),
+  PersonalDetails: mockReactComponent("PersonalDetails"),
 }));
 jest.mock("../../../src/components/Header", () => ({
-  Header: mockReactComponent(),
+  Header: mockReactComponent("Header"),
 }));
 jest.mock("../../../src/components/Block", () => ({
-  Block: mockReactComponent(),
+  Block: mockReactComponent("Block"),
 }));
 jest.mock("../../../src/components/Experience", () => ({
-  Experience: mockReactComponent(),
+  Experience: mockReactComponent("Experience"),
 }));
 
 describe("Small", () => {
@@ -43,13 +39,13 @@ describe("Small", () => {
     useContext.mockReturnValueOnce(slots);
 
     // When
-    const actual = create(<Small />).root;
+    const actual = render(<Small />);
 
     // Then
     expect(useContext).toBeCalledWith(SlotsContext);
-    expect(actual.findByType(PersonalDetails)).toBeDefined();
-    expect(actual.findByType(Header).props.children).toEqual(slots.header);
-    expect(actual.findAllByType(Block)[0].props.children).toEqual(slots.one);
-    expect(actual.findByType(Experience).props.children).toEqual(slots.two);
+    expect(actual.getByTestId("PersonalDetails")).toBeVisible();
+    expect(actual.getByTestId("Header")).toHaveTextContent(slots.header);
+    expect(actual.queryAllByTestId("Block")[0]).toHaveTextContent(slots.one);
+    expect(actual.getByTestId("Experience")).toHaveTextContent(slots.two);
   });
 });

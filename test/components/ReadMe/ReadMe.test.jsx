@@ -1,18 +1,18 @@
 import React from "react";
-import { create } from "react-test-renderer";
+import { render } from "@testing-library/react";
 import Markdown from "react-markdown";
 import README from "../../../README.md";
 import { ReadMe } from "../../../src/components/ReadMe";
 
-jest.mock("react-markdown", () => (mockReactComponent()));
+jest.mock("react-markdown", () => (mockReactComponent("Markdown")));
 jest.mock("../../../src/components/Header", () => ({
-  Header: mockReactComponent(),
+  Header: mockReactComponent("Header"),
 }));
 jest.mock("../../../src/components/Layout", () => ({
-  Layout: mockReactComponent(),
+  Layout: mockReactComponent("Layout"),
 }));
 jest.mock("../../../src/components/Block", () => ({
-  Block: mockReactComponent(),
+  Block: mockReactComponent("Block"),
 }));
 jest.mock("../../../README.md", () => ("Read me."));
 
@@ -26,10 +26,10 @@ describe("ReadMe", () => {
     const components = chance.object();
 
     // When
-    const actual = create(<ReadMe components={components} />).root.findByType(Markdown);
+    render(<ReadMe components={components} />).getByTestId("Markdown");
 
     // Then
-    expect(actual.props.components).toBe(components);
-    expect(actual.props.children).toBe(README);
+    expect(Markdown.mock.calls[0][0])
+      .toMatchObject({ components, children: README });
   });
 });

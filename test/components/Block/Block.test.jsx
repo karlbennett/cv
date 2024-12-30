@@ -1,10 +1,9 @@
 import React from "react";
-import { create } from "react-test-renderer";
-import { Box } from "@mui/material";
+import { render } from "@testing-library/react";
 import { Block } from "../../../src/components/Block";
 
 jest.mock("@mui/material", () => ({
-  Box: mockReactComponent(),
+  Box: mockReactComponent("Box"),
 }));
 
 describe("Block", () => {
@@ -17,9 +16,9 @@ describe("Block", () => {
     const text = chance.string();
 
     // When
-    const actual = create(<Block>{text}</Block>).root;
+    const actual = render(<Block>{text}</Block>);
 
     // Then
-    expect(actual.findByType(Box).props).toMatchObject({ children: text });
+    expect(actual.getByTestId("Box")).toHaveTextContent(text);
   });
 });

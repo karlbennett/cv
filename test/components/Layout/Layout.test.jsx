@@ -1,9 +1,7 @@
 import React from "react";
-import { create } from "react-test-renderer";
+import { render } from "@testing-library/react";
 import { useMediaQuery } from "@mui/material";
 import theme from "../../../src/theme";
-import { Big } from "../../../src/components/Big";
-import { Small } from "../../../src/components/Small";
 import { Layout } from "../../../src/components/Layout";
 
 jest.mock("@mui/material", () => ({
@@ -13,10 +11,10 @@ jest.mock("../../../src/theme", () => ({
   breakpoints: { up: jest.fn() },
 }));
 jest.mock("../../../src/components/Big", () => ({
-  Big: mockReactComponent(),
+  Big: mockReactComponent("Big"),
 }));
 jest.mock("../../../src/components/Small", () => ({
-  Small: mockReactComponent(),
+  Small: mockReactComponent("Small"),
 }));
 
 describe("Layout", () => {
@@ -32,12 +30,13 @@ describe("Layout", () => {
     useMediaQuery.mockReturnValueOnce(true);
 
     // When
-    const actual = create(<Layout />).root;
+    const actual = render(<Layout />);
 
     // Then
     expect(theme.breakpoints.up).toBeCalledWith("sm");
     expect(useMediaQuery).toBeCalledWith(up);
-    expect(actual.findByType(Big)).toBeDefined();
+    expect(actual.queryAllByTestId("Small")).toEqual([]);
+    expect(actual.getByTestId("Big")).toBeVisible();
   });
 
   test("Can render Small", () => {
@@ -48,11 +47,12 @@ describe("Layout", () => {
     useMediaQuery.mockReturnValueOnce(false);
 
     // When
-    const actual = create(<Layout />).root;
+    const actual = render(<Layout />);
 
     // Then
     expect(theme.breakpoints.up).toBeCalledWith("sm");
     expect(useMediaQuery).toBeCalledWith(up);
-    expect(actual.findByType(Small).props).toBeDefined();
+    expect(actual.queryAllByTestId("Big")).toEqual([]);
+    expect(actual.getByTestId("Small")).toBeVisible();
   });
 });
