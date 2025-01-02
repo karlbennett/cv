@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import { Experience } from "../../../src/components/Experience";
 
 jest.mock("@mui/material", () => ({
-  Box: mockReactComponent("Box"),
+  ...mockReactComponent("Box"),
 }));
 
 describe("Experience", () => {

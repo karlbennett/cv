@@ -4,15 +4,15 @@ import Markdown from "react-markdown";
 import README from "../../../README.md";
 import { ReadMe } from "../../../src/components/ReadMe";
 
-jest.mock("react-markdown", () => (mockReactComponent("Markdown")));
+jest.mock("react-markdown", () => (mockReactComponent("Markdown")["Markdown"]));
 jest.mock("../../../src/components/Header", () => ({
-  Header: mockReactComponent("Header"),
+  ...mockReactComponent("Header"),
 }));
 jest.mock("../../../src/components/Layout", () => ({
-  Layout: mockReactComponent("Layout"),
+  ...mockReactComponent("Layout"),
 }));
 jest.mock("../../../src/components/Block", () => ({
-  Block: mockReactComponent("Block"),
+  ...mockReactComponent("Block"),
 }));
 jest.mock("../../../README.md", () => ("Read me."));
 

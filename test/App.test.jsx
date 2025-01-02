@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import { render } from "@testing-library/react";
-import { ReadMe } from "../../src/components/ReadMe";
-import { SlotsContext } from "../../src/components/Slots";
-import { App } from "../../src/App";
+import { ReadMe } from "../src/components/ReadMe";
+import { SlotsContext } from "../src/components/Slots";
+import { App } from "../src/App";
 
 jest.mock("react", () => ({
   ...jest.requireActual("react"),
   useState: jest.fn(),
 }));
-jest.mock("../../src/components/Slots", () => ({
-  SlotsContext: { Provider: mockReactComponent("Provider") },
+jest.mock("../src/components/Slots", () => ({
+  SlotsContext: mockReactComponent("Provider"),
 }));
-jest.mock("../../src/components/ReadMe", () => ({
-  ReadMe: mockReactComponent("ReadMe"),
+jest.mock("../src/components/ReadMe", () => ({
+  ...mockReactComponent("ReadMe"),
 }));
-jest.mock("../../src/components/Layout", () => ({
-  Layout: mockReactComponent("Layout"),
+jest.mock("../src/components/Layout", () => ({
+  ...mockReactComponent("Layout"),
 }));
 
 describe("App", () => {

@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import { Header } from "../../../src/components/Header";
 
 jest.mock("@mui/material", () => ({
-  Box: mockReactComponent("Box"),
+  ...mockReactComponent("Box"),
 }));
 
 describe("Header", () => {

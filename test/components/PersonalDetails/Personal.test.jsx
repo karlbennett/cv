@@ -9,13 +9,13 @@ jest.mock("react", () => ({
   useState: jest.fn(),
 }));
 jest.mock("@mui/material", () => ({
-  List: mockReactComponent("List"),
-  ListItem: mockReactComponent("ListItem"),
-  ListItemIcon: mockReactComponent("ListItemIcon"),
-  Link: mockReactComponent("Link"),
+  ...mockReactComponent("List"),
+  ...mockReactComponent("ListItem"),
+  ...mockReactComponent("ListItemIcon"),
+  ...mockReactComponent("Link"),
 }));
 jest.mock("../../../src/components/Block", () => ({
-  Block: mockReactComponent("Block"),
+  ...mockReactComponent("Block"),
 }));
 jest.mock("../../../personal.json", () => ({}));
 

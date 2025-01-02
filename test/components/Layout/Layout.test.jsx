@@ -11,10 +11,10 @@ jest.mock("../../../src/theme", () => ({
   breakpoints: { up: jest.fn() },
 }));
 jest.mock("../../../src/components/Big", () => ({
-  Big: mockReactComponent("Big"),
+  ...mockReactComponent("Big"),
 }));
 jest.mock("../../../src/components/Small", () => ({
-  Small: mockReactComponent("Small"),
+  ...mockReactComponent("Small"),
 }));
 
 describe("Layout", () => {

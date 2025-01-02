@@ -8,19 +8,19 @@ jest.mock("react", () => ({
   useContext: jest.fn(),
 }));
 jest.mock("@mui/material", () => ({
-  Box: mockReactComponent("Box"),
+  ...mockReactComponent("Box"),
 }));
 jest.mock("../../../src/components/PersonalDetails", () => ({
-  PersonalDetails: mockReactComponent("PersonalDetails"),
+  ...mockReactComponent("PersonalDetails"),
 }));
 jest.mock("../../../src/components/Header", () => ({
-  Header: mockReactComponent("Header"),
+  ...mockReactComponent("Header"),
 }));
 jest.mock("../../../src/components/Block", () => ({
-  Block: mockReactComponent("Block"),
+  ...mockReactComponent("Block"),
 }));
 jest.mock("../../../src/components/Experience", () => ({
-  Experience: mockReactComponent("Experience"),
+  ...mockReactComponent("Experience"),
 }));
 
 describe("Small", () => {
