@@ -38,7 +38,7 @@
     "@typescript-eslint/eslint-plugin": "^8.25.0",
     "@typescript-eslint/parser": "^8.25.0",
     "babel-jest": "^29.7.0",
-    "babel-loader": "^9.2.1",
+    "babel-loader": "^10.0.0",
     "chance": "^1.1.12",
     "chance-object": "^1.0.1",
     "eslint": "^9.21.0",
