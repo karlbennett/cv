@@ -42,7 +42,7 @@
     "chance": "^1.1.12",
     "chance-object": "^1.0.1",
     "eslint": "^9.25.1",
-    "eslint-import-resolver-typescript": "^4.3.2",
+    "eslint-import-resolver-typescript": "^4.3.4",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jest": "^28.11.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
