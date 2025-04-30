@@ -25,10 +25,10 @@ export const Big: React.FC = () => {
       <Header>{slots.header}</Header>
       {hasPersonal ?
         <Grid container spacing={0}>
-          <Grid item xs={4.8} sx={{ borderBottom: 1 }}>
+          <Grid size={4.8} sx={{ borderBottom: 1 }}>
             <PersonalDetails />
           </Grid>
-          <Grid item xs={7.2} sx={{ borderBottom: 1 }}>
+          <Grid size={7.2} sx={{ borderBottom: 1 }}>
             <Block sx={{ paddingLeft: 4, paddingTop: 0, borderLeft: 1 }}>
               {slots.profile}
             </Block>
@@ -37,19 +37,19 @@ export const Big: React.FC = () => {
         : <Block sx={{ paddingTop: 0, borderBottom: 1 }}>{slots.profile}</Block>
       }
       <Grid container spacing={0}>
-        <Grid item xs={4.8}>
-          <Grid item xs={12} sx={{ borderBottom: 1 }}>
+        <Grid size={4.8}>
+          <Grid size={12} sx={{ borderBottom: 1 }}>
             <Left>{slots.skills}</Left>
           </Grid>
-          <Grid item xs={12} sx={{ borderBottom: 1 }}>
+          <Grid size={12} sx={{ borderBottom: 1 }}>
             <Left>{slots.education}</Left>
           </Grid>
-          <Grid item xs={12}>
+          <Grid size={12}>
             <Left sx={{ borderBottom: 0 }}>{slots.tools}</Left>
           </Grid>
         </Grid>
-        <Grid item xs={7.2}>
-          <Grid item xs={12}>
+        <Grid size={7.2}>
+          <Grid size={12}>
             <Block sx={{
               paddingLeft: 4,
               borderLeft: 1,
