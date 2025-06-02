@@ -41,7 +41,7 @@
     "babel-loader": "^10.0.0",
     "chance": "^1.1.13",
     "chance-object": "^1.0.1",
-    "eslint": "^9.27.0",
+    "eslint": "^9.28.0",
     "eslint-import-resolver-typescript": "^4.3.5",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jest": "^28.11.0",
