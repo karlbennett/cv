@@ -5,7 +5,7 @@ KARL <span>BENNETT</span>
 
 #### PRINCIPAL SOFTWARE ENGINEER
 
-[https://karlbennett.github.io/cv/](https://karlbennett.github.io/cv/)
+[https://github.com/karlbennett/cv](https://github.com/karlbennett/cv) [(webpage)](https://karlbennett.github.io/cv/)
 
 </section>
 
@@ -17,7 +17,7 @@ I am a **Principal Software Engineer** with **15+ years** experience. When worki
 following principles to be most important: **Communication**, **Transparency**, **Simplicity**,
 **Separation of Concerns**, and **Agility**. I consider **Agile Delivery** with **BDD/TDD**, **CI/CD**, and
 **Automation** to be the best practices for fulfilling these principles. Because of this I am dedicated to finding and 
-promoting, through practice, the most effective implementations of these disciplines.
+promoting, through practice and delivery, the most effective implementations of these disciplines.
 
 </section>
 
@@ -32,7 +32,7 @@ promoting, through practice, the most effective implementations of these discipl
 - Technical Road Map
 - Behaviour Driven Development
 - Test Driven Development/Design
-- Software/Infrastructure Design
+- Software/Infrastructure/System Design
 - Infrastructure Automation
 - Test Automation
 - CI/CD Automation
@@ -55,10 +55,10 @@ promoting, through practice, the most effective implementations of these discipl
 
 ### TOOLS
 
-**Languages:** Java, Scala, Groovy, SQL, NoSQL, Javascript, TypeScript, Python  
+**Languages:** Java, Groovy, Javascript, TypeScript, Python, Shell Script, SQL  
 **CI/CD:** GIT, SVN, Maven, Hudson/Jenkins, Bamboo, AWS CodeCommit, AWS CodePipeline, AWS CodeBuild  
-**Frameworks:** Quarkus, Spring Boot, JUnit, Mockito, Cucumber, Selenium, React, Vue, Angular, Webcomponents, SASS, 
-Webpack, Jest  
+**Frameworks:** Spring Boot, Quarkus, JUnit, Mockito, Cucumber, Selenium, React, Vue, Angular, Webcomponents, SASS, 
+styled-components, Material UI, Webpack, Jest  
 **Mobile:** React Native, Appium, AWS Device Farm, Godot  
 **Cloud:** Terraform, AWS (Cloudformation, IAM, Lambda, APIGateway, EC2, SQS, 
 ElasticBeanstalk, DynamoDB, RDS)
@@ -76,6 +76,7 @@ ElasticBeanstalk, DynamoDB, RDS)
 - Created and driving the delivery of **Technical Road Maps** for multiple **Business Units**.   
 - **Mentoring and supporting** all developers in Vector Digital.
 - Designed/Implemented **Behaviour Driven Development** process.
+- Designed/Implemented **Test Driven Development** process.
 - Designed/Built the current **CI/CD** process and **pipelines**.
 - Designed/Built the current **Cloud Infrastructure** standard.
 - Built core **infrastructure templates** (**Terraform**).
@@ -95,7 +96,7 @@ ElasticBeanstalk, DynamoDB, RDS)
 *2015 - 2016*  
 - **Agile development mentorship**.
 - Designed and Promoted **Behaviour Driven Development** process.
-- Created Vodafone’s first end to end **agile software delivery team**.
+- Created Vodafone’s first end to end fullstack **agile software delivery team**.
 - **Maintained and supported** multiple backend services (Cucumber, Angular, Maven, Spring).
 
 <span class="dark">**SENIOR AGILE SOFTWARE DEVELOPER**</span>  

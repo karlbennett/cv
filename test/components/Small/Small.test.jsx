@@ -42,7 +42,7 @@ describe("Small", () => {
     const actual = render(<Small />);
 
     // Then
-    expect(useContext).toBeCalledWith(SlotsContext);
+    expect(useContext).toHaveBeenCalledWith(SlotsContext);
     expect(actual.getByTestId("PersonalDetails")).toBeVisible();
     expect(actual.getByTestId("Header")).toHaveTextContent(slots.header);
     expect(actual.queryAllByTestId("Block")[0]).toHaveTextContent(slots.one);

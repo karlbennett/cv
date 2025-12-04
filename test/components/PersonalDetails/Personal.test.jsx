@@ -45,7 +45,7 @@ describe("Personal", () => {
     const { container } = render(<PersonalDetails />);
 
     // Then
-    expect(setPersonal).toBeCalledWith({ hasPersonal: false, details: EMPTY_PERSONAL_DETAILS });
+    expect(setPersonal).toHaveBeenCalledWith({ hasPersonal: false, details: EMPTY_PERSONAL_DETAILS });
     expect(container).toBeEmptyDOMElement();
   });
 
@@ -76,7 +76,7 @@ describe("Personal", () => {
     const actual = render(<PersonalDetails />).queryAllByTestId("Link");
 
     // Then
-    expect(setPersonal).toBeCalledWith({ hasPersonal: true, details: personalJson });
+    expect(setPersonal).toHaveBeenCalledWith({ hasPersonal: true, details: personalJson });
     expect(actual[0]).toHaveTextContent(personal.details.email);
     expect(actual[1]).toHaveTextContent(personal.details.phone);
     expect(actual[2]).toHaveTextContent(personal.details.address.text);

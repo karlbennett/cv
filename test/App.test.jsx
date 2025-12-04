@@ -38,9 +38,9 @@ describe("App", () => {
     ReadMe.mock.calls[0][0].components.section({ node, "data-name": dataName });
 
     // Then
-    expect(useState).toBeCalledWith({});
+    expect(useState).toHaveBeenCalledWith({});
     expect(slots[dataName]).toBeDefined();
-    expect(setSlots).toBeCalledWith(slots);
+    expect(setSlots).toHaveBeenCalledWith(slots);
     expect(SlotsContext.Provider.mock.calls[0][0])
       .toMatchObject({ value: slots });
     expect(actual.getByTestId("Layout")).toBeVisible();
@@ -58,8 +58,8 @@ describe("App", () => {
     ReadMe.mock.calls[0][0].components.section({});
 
     // Then
-    expect(useState).toBeCalledWith({});
-    expect(setSlots).toBeCalledWith(slots);
+    expect(useState).toHaveBeenCalledWith({});
+    expect(setSlots).toHaveBeenCalledWith(slots);
     expect(SlotsContext.Provider.mock.calls[0][0])
       .toMatchObject({ value: slots });
     expect(actual.getByTestId("Layout")).toBeVisible();

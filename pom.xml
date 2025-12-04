@@ -7,8 +7,8 @@
   <packaging>pom</packaging>
 
   <properties>
-    <node.version>v22.12.0</node.version>
-    <npm.version>10.9.0</npm.version>
+    <node.version>v24.11.1</node.version>
+    <npm.version>11.6.2</npm.version>
     <maven.test.skip>false</maven.test.skip>
   </properties>
 
@@ -67,11 +67,11 @@
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>3.5.3</version>
+          <version>3.5.4</version>
         </plugin>
         <plugin>
           <artifactId>maven-failsafe-plugin</artifactId>
-          <version>3.5.3</version>
+          <version>3.5.4</version>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
@@ -95,7 +95,7 @@
         </plugin>
         <plugin>
           <artifactId>maven-release-plugin</artifactId>
-          <version>3.2.0</version>
+          <version>3.3.0</version>
         </plugin>
         <plugin>
           <artifactId>maven-scm-plugin</artifactId>

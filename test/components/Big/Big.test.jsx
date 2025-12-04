@@ -52,7 +52,7 @@ describe("Big", () => {
     const actual = render(<Big />);
 
     // Then
-    expect(useContext).toBeCalledWith(SlotsContext);
+    expect(useContext).toHaveBeenCalledWith(SlotsContext);
     expect(actual.getByTestId("Header")).toHaveTextContent(slots.header);
     expect(actual.queryAllByTestId("PersonalDetails")).toEqual([]);
     const blocks = await actual.findAllByTestId("Block");
@@ -81,7 +81,7 @@ describe("Big", () => {
     const actual = render(<Big />);
 
     // Then
-    expect(useContext).toBeCalledWith(SlotsContext);
+    expect(useContext).toHaveBeenCalledWith(SlotsContext);
     expect(actual.getByTestId("Header")).toHaveTextContent(slots.header);
     expect(actual.getByTestId("PersonalDetails")).toBeVisible();
     const blocks = await actual.findAllByTestId("Block");

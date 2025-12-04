@@ -33,8 +33,8 @@ describe("Layout", () => {
     const actual = render(<Layout />);
 
     // Then
-    expect(theme.breakpoints.up).toBeCalledWith("sm");
-    expect(useMediaQuery).toBeCalledWith(up);
+    expect(theme.breakpoints.up).toHaveBeenCalledWith("sm");
+    expect(useMediaQuery).toHaveBeenCalledWith(up);
     expect(actual.queryAllByTestId("Small")).toEqual([]);
     expect(actual.getByTestId("Big")).toBeVisible();
   });
@@ -50,8 +50,8 @@ describe("Layout", () => {
     const actual = render(<Layout />);
 
     // Then
-    expect(theme.breakpoints.up).toBeCalledWith("sm");
-    expect(useMediaQuery).toBeCalledWith(up);
+    expect(theme.breakpoints.up).toHaveBeenCalledWith("sm");
+    expect(useMediaQuery).toHaveBeenCalledWith(up);
     expect(actual.queryAllByTestId("Big")).toEqual([]);
     expect(actual.getByTestId("Small")).toBeVisible();
   });
