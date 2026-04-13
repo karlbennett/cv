@@ -55,7 +55,7 @@
     "image-minimizer-webpack-plugin": "^5.0.0",
     "jest": "^30.3.0",
     "jest-environment-jsdom": "^30.3.0",
-    "prettier": "^3.8.1",
+    "prettier": "^3.8.2",
     "serve": "^14.2.6",
     "svgo": "^4.0.1",
     "terser-webpack-plugin": "^5.4.0",
