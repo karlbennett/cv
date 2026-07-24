@@ -13,10 +13,13 @@ declare interface Details {
   email: string;
   phone: string;
   address: {
-    link: string;
+    url: string;
     text: string;
   };
-  website: string;
+  website: {
+    url: string;
+    text: string;
+  };
 }
 
 declare interface Personal {

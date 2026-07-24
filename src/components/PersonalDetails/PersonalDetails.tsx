@@ -58,13 +58,13 @@ export const PersonalDetails: React.FC<Props> = ({ sx }) => {
           <ListItemIcon>
             <PlaceIcon />
           </ListItemIcon>
-          <Link href={details.address.link}>{details.address.text}</Link>
+          <Link href={details.address.url}>{details.address.text}</Link>
         </ListItem>
         <ListItem disablePadding>
           <ListItemIcon>
             <LanguageIcon />
           </ListItemIcon>
-          <Link href={details.website}>{details.website}</Link>
+          <Link href={details.website.url}>{details.website.text || details.website.url}</Link>
         </ListItem>
       </List>
     </Block>

@@ -23,6 +23,26 @@ jest.mock("../../../src/components/Block", () => ({
 jest.mock("/personal.js", () => ({}), { virtual: true });
 
 describe("Personal", () => {
+  let personal;
+
+  beforeEach(() => {
+    personal = {
+      hasPersonal: true,
+      details: {
+        email: chance.string(),
+        phone: chance.string(),
+        address: {
+          url: chance.string(),
+          text: chance.string(),
+        },
+        website: {
+          url: chance.string(),
+          text: chance.string(),
+        },
+      },
+    };
+  });
+
   afterEach(() => {
     jest.restoreAllMocks();
   });
@@ -58,18 +78,6 @@ describe("Personal", () => {
 
   test("Will render personal details if they are supplied.", () => {
     const setPersonal = jest.fn();
-    const personal = {
-      hasPersonal: true,
-      details: {
-        email: chance.string(),
-        phone: chance.string(),
-        address: {
-          link: chance.string(),
-          text: chance.string(),
-        },
-        website: chance.string(),
-      },
-    };
 
     // Given
     useState.mockReturnValueOnce([personal, setPersonal]);
@@ -82,6 +90,23 @@ describe("Personal", () => {
     expect(actual[0]).toHaveTextContent(personal.details.email);
     expect(actual[1]).toHaveTextContent(personal.details.phone);
     expect(actual[2]).toHaveTextContent(personal.details.address.text);
-    expect(actual[3]).toHaveTextContent(personal.details.website);
+    expect(actual[3]).toHaveTextContent(personal.details.website.text);
+  });
+
+  test("Will show the website url if no text is provided.", () => {
+    const setPersonal = jest.fn();
+
+    // Given
+    personal.details.website = {
+      url: chance.string(),
+    };
+    useState.mockReturnValueOnce([personal, setPersonal]);
+    useEffect.mockImplementationOnce((cb) => cb());
+
+    // When
+    const actual = render(<PersonalDetails />).queryAllByTestId("Link");
+
+    // Then
+    expect(actual[3]).toHaveTextContent(personal.details.website.url);
   });
 });
