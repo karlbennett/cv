@@ -5,9 +5,8 @@ declare module "*.md" {
   export default content;
 }
 
-declare module "*.json" {
-  const content: Details;
-  export default content;
+declare module "*.js" {
+  export const details: Details;
 }
 
 declare interface Details {

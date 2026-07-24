@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 "use strict";
 
-const webpack = require("webpack");
 const path = require("path");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = (env, { mode }) => {
   const isProd = "production" === mode;
@@ -89,10 +89,11 @@ module.exports = (env, { mode }) => {
       new HtmlWebpackPlugin({
         template: "./public/index.html",
       }),
-      new webpack.DefinePlugin({
-        "process.env": {
-          "PERSONAL": JSON.stringify(process.env.PERSONAL),
-        },
+      new CopyPlugin({
+        patterns: [{
+          from: "public/personal.js",
+          noErrorOnMissing: true,
+        }],
       }),
     ],
     watchOptions: {

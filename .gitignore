@@ -12,7 +12,7 @@ build
 coverage
 
 # Private Personal Details for Job Applications
-personal.json
+personal.js
 
 # Temp
 temp*.txt

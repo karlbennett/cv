@@ -7,7 +7,9 @@
     </scripts>
     <node-interpreter value="$PROJECT_DIR$/node/node" />
     <package-manager value="$PROJECT_DIR$/node/npm" />
-    <envs />
+    <envs>
+      <env name="NODE_ENV" value="production" />
+    </envs>
     <method v="2" />
   </configuration>
 </component>

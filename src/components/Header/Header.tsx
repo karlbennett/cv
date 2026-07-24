@@ -9,8 +9,8 @@ interface Props {
 export const Header: React.FC<Props> = ({ sx, children }) => {
   return (
     <Box
-      bgcolor="background.paper"
       sx={{
+        backgroundColor: "background.paper",
         textTransform: "capitalize",
         margin: "-32px -32px 32px -32px",
         padding: "32px 32px 8px 32px",

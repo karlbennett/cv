@@ -1,1 +1,1 @@
-export * from "./PersonalDetails";
+export { PersonalDetails, usePersonal } from "./PersonalDetails";

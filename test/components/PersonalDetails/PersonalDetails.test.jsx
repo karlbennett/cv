@@ -1,7 +1,10 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
 import React, { useEffect, useState } from "react";
 import { render } from "@testing-library/react";
-import { EMPTY_PERSONAL_DETAILS } from "../../../src/empties";
+import {
+  ignoreNotFound,
+  PersonalDetails,
+  populatePersonal
+} from "../../../src/components/PersonalDetails/PersonalDetails";
 
 jest.mock("react", () => ({
   ...jest.requireActual("react"),
@@ -17,43 +20,43 @@ jest.mock("@mui/material", () => ({
 jest.mock("../../../src/components/Block", () => ({
   ...mockReactComponent("Block"),
 }));
-jest.mock("../../../personal.json", () => ({}));
+jest.mock("/personal.js", () => ({}), { virtual: true });
 
 describe("Personal", () => {
-  let _env;
-
-  beforeEach(() => {
-    _env = process.env;
-    process.env = {};
-  });
-
   afterEach(() => {
     jest.restoreAllMocks();
-    process.env = _env;
+  });
+
+  test("Can populate the personal details.", () => {
+    // Given
+    const populate = jest.fn();
+    const details = chance.object();
+
+    // When
+    populatePersonal(populate)({ details });
+
+    // Then
+    expect(populate).toHaveBeenCalledWith({ hasPersonal: true, details });
+  });
+
+  test("Do nothing on not found.", () => {
+    // When
+    ignoreNotFound();
   });
 
   test("Will render nothing if no personal details are supplied.", () => {
-    const { PersonalDetails } = require("../../../src/components/PersonalDetails");
-    const personal = chance.object();
-    const setPersonal = jest.fn();
-
     // Given
-    useState.mockReturnValueOnce([personal, setPersonal]);
+    useState.mockReturnValueOnce([{}, jest.fn()]);
     useEffect.mockImplementationOnce((cb) => cb());
 
     // When
     const { container } = render(<PersonalDetails />);
 
     // Then
-    expect(setPersonal).toHaveBeenCalledWith({ hasPersonal: false, details: EMPTY_PERSONAL_DETAILS });
     expect(container).toBeEmptyDOMElement();
   });
 
   test("Will render personal details if they are supplied.", () => {
-    process.env.PERSONAL = "true";
-    const personalJson = require("../../../personal.json");
-    personalJson.something = chance.string();
-    const { PersonalDetails } = require("../../../src/components/PersonalDetails");
     const setPersonal = jest.fn();
     const personal = {
       hasPersonal: true,
@@ -76,7 +79,6 @@ describe("Personal", () => {
     const actual = render(<PersonalDetails />).queryAllByTestId("Link");
 
     // Then
-    expect(setPersonal).toHaveBeenCalledWith({ hasPersonal: true, details: personalJson });
     expect(actual[0]).toHaveTextContent(personal.details.email);
     expect(actual[1]).toHaveTextContent(personal.details.phone);
     expect(actual[2]).toHaveTextContent(personal.details.address.text);
