@@ -7,8 +7,8 @@
   <packaging>pom</packaging>
 
   <properties>
-    <node.version>v24.18.0</node.version>
-    <npm.version>11.16.0</npm.version>
+    <node.version>v24.21.0</node.version>
+    <npm.version>11.19.0</npm.version>
     <maven.test.skip>false</maven.test.skip>
   </properties>
 
