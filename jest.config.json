@@ -9,7 +9,8 @@
     "\\.(css|less|md)$": "<rootDir>/test/fileMock.js"
   },
   "transformIgnorePatterns": [
-    "nothing"
+    "[/\\\\]node_modules[/\\\\](?!rehype-raw)$",
+    "^.+\\.module\\.(css|sass|scss)$"
   ],
   "setupFilesAfterEnv": ["<rootDir>/test/setupTests.js"],
   "coverageReporters": [
