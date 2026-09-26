@@ -9,6 +9,7 @@
   <properties>
     <node.version>v24.21.0</node.version>
     <npm.version>11.19.0</npm.version>
+    <surefire.version>3.6.0</surefire.version>
     <maven.test.skip>false</maven.test.skip>
   </properties>
 
@@ -67,11 +68,11 @@
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>3.5.6</version>
+          <version>${surefire.version}</version>
         </plugin>
         <plugin>
           <artifactId>maven-failsafe-plugin</artifactId>
-          <version>3.5.6</version>
+          <version>${surefire.version}</version>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
