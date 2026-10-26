@@ -35,3 +35,6 @@ updates:
       - dependency-name: "typescript"
         versions:
           - ">=7.0.0"
+      - dependency-name: "webpack-dev-server"
+        versions:
+          - ">=6.0.0"

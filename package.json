@@ -14,11 +14,11 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^9.5.0",
-    "@mui/material": "^9.4.0",
+    "@mui/material": "^9.5.0",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "react": "^19.3.1",
-    "react-dom": "^19.3.0",
+    "react-dom": "^19.3.1",
     "react-markdown": "^10.1.0",
     "rehype-raw": "^7.0.0"
   },
@@ -35,8 +35,8 @@
     "@testing-library/react": "^16.3.3",
     "@types/jest": "^30.0.0",
     "@types/node": "^26.6.5",
-    "@typescript-eslint/eslint-plugin": "^8.72.0",
-    "@typescript-eslint/parser": "^8.71.2",
+    "@typescript-eslint/eslint-plugin": "^8.72.1",
+    "@typescript-eslint/parser": "^8.72.1",
     "babel-jest": "^30.5.2",
     "babel-loader": "^10.1.1",
     "chance": "^1.1.13",
@@ -61,9 +61,9 @@
     "svgo": "^4.1.0",
     "terser-webpack-plugin": "^5.6.1",
     "typescript": "^6.0.3",
-    "webpack": "^5.112.0",
+    "webpack": "^5.112.2",
     "webpack-cli": "^7.2.3",
-    "webpack-dev-server": "^6.1.0"
+    "webpack-dev-server": "^5.2.7"
   },
   "browserslist": {
     "production": [
